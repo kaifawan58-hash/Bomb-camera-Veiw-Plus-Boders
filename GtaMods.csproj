@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <!-- net48 close match to old .NET Framework 4.6 target, works with SHVDN v3 -->
+    <AssemblyName>GtaMods</AssemblyName>
+    <RootNamespace>GtaMods</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- pulls ScriptHookVDotNet3 API automatically, no manual dll needed -->
+    <PackageReference Include="ScriptHookVDotNet3" Version="3.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="AirFreezeBombCam.cs" />
+    <Compile Include="WorldControlMod.cs" />
+    <Compile Include="MenyooMapForceLoader.cs" />
+  </ItemGroup>
+</Project>

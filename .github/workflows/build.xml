@@ -1,0 +1,30 @@
+name: Build GTA Mods
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore GtaMods.csproj
+
+      - name: Build
+        run: dotnet build GtaMods.csproj -c Release -o build_output
+
+      - name: Upload compiled DLL
+        uses: actions/upload-artifact@v4
+        with:
+          name: GtaMods-dll
+          path: build_output/GtaMods.dll
